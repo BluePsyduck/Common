@@ -1,0 +1,31 @@
+{
+    "name": "bluepsyduck/common",
+    "description": "Some classes commonly used in other projects.",
+    "homepage": "https://github.com/BluePsyduck/Common",
+    "type": "library",
+    "keywords": ["BluePsyduck", "common"],
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "BluePsyduck",
+            "email": "bluepsyduck@gmx.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BluePsyduck\\Common\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BluePsyduckTests\\Common\\": "tests/src/"
+        }
+    }
+}
