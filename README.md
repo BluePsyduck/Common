@@ -1,5 +1,7 @@
 # BluePsyduck's Common Library
 
+[![Latest Stable Version](https://poser.pugx.org/bluepsyduck/common/v/stable)](https://packagist.org/packages/bluepsyduck/common) [![Total Downloads](https://poser.pugx.org/bluepsyduck/common/downloads)](https://packagist.org/packages/bluepsyduck/common) [![License](https://poser.pugx.org/bluepsyduck/common/license)](https://packagist.org/packages/bluepsyduck/common) [![Build Status](https://travis-ci.org/BluePsyduck/Common.svg?branch=master)](https://travis-ci.org/BluePsyduck/Common) [![codecov](https://codecov.io/gh/BluePsyduck/Common/branch/master/graph/badge.svg)](https://codecov.io/gh/BluePsyduck/Common)
+
 This library contains some classes commonly used in other projects.
 
 ## DataBuilder
