@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  *
- * @coversDefaultClass BluePsyduck\Common\Data\DataBuilder
+ * @coversDefaultClass \BluePsyduck\Common\Data\DataBuilder
  */
 class DataBuilderTest extends TestCase
 {
@@ -23,7 +23,7 @@ class DataBuilderTest extends TestCase
     public function testConstruct()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals([], $dataBuilder->getData());
+        $this->assertSame([], $dataBuilder->getData());
     }
 
     /**
@@ -32,12 +32,12 @@ class DataBuilderTest extends TestCase
     public function testSet()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals($dataBuilder, $dataBuilder->set('abc', 'def'));
-        $this->assertEquals($dataBuilder, $dataBuilder->set('ghi', 42));
-        $this->assertEquals($dataBuilder, $dataBuilder->set('jkl', 13.37));
-        $this->assertEquals($dataBuilder, $dataBuilder->set('mno', true));
-        $this->assertEquals($dataBuilder, $dataBuilder->set('fail', 'pqr', 'pqr'));
-        $this->assertEquals($dataBuilder, $dataBuilder->set('stu', '42', 42));
+        $this->assertSame($dataBuilder, $dataBuilder->set('abc', 'def'));
+        $this->assertSame($dataBuilder, $dataBuilder->set('ghi', 42));
+        $this->assertSame($dataBuilder, $dataBuilder->set('jkl', 13.37));
+        $this->assertSame($dataBuilder, $dataBuilder->set('mno', true));
+        $this->assertSame($dataBuilder, $dataBuilder->set('fail', 'pqr', 'pqr'));
+        $this->assertSame($dataBuilder, $dataBuilder->set('stu', '42', 42));
 
         $expectedData = [
             'abc' => 'def',
@@ -46,7 +46,7 @@ class DataBuilderTest extends TestCase
             'mno' => true,
             'stu' => '42'
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 
     /**
@@ -55,18 +55,18 @@ class DataBuilderTest extends TestCase
     public function testSetBoolean()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals($dataBuilder, $dataBuilder->setBoolean('abc', true));
-        $this->assertEquals($dataBuilder, $dataBuilder->setBoolean('def', false));
-        $this->assertEquals($dataBuilder, $dataBuilder->setBoolean('fail', true, true));
-        $this->assertEquals($dataBuilder, $dataBuilder->setBoolean('fail', false, false));
-        $this->assertEquals($dataBuilder, $dataBuilder->setBoolean('ghi', 42));
+        $this->assertSame($dataBuilder, $dataBuilder->setBoolean('abc', true));
+        $this->assertSame($dataBuilder, $dataBuilder->setBoolean('def', false));
+        $this->assertSame($dataBuilder, $dataBuilder->setBoolean('fail', true, true));
+        $this->assertSame($dataBuilder, $dataBuilder->setBoolean('fail', false, false));
+        $this->assertSame($dataBuilder, $dataBuilder->setBoolean('ghi', 42));
 
         $expectedData = [
             'abc' => true,
             'def' => false,
             'ghi' => true
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 
     /**
@@ -75,11 +75,11 @@ class DataBuilderTest extends TestCase
     public function testSetInteger()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals($dataBuilder, $dataBuilder->setInteger('abc', 42));
-        $this->assertEquals($dataBuilder, $dataBuilder->setInteger('def', -21));
-        $this->assertEquals($dataBuilder, $dataBuilder->setInteger('ghi', 0));
-        $this->assertEquals($dataBuilder, $dataBuilder->setInteger('fail', 1337, 1337));
-        $this->assertEquals($dataBuilder, $dataBuilder->setInteger('jkl', '27'));
+        $this->assertSame($dataBuilder, $dataBuilder->setInteger('abc', 42));
+        $this->assertSame($dataBuilder, $dataBuilder->setInteger('def', -21));
+        $this->assertSame($dataBuilder, $dataBuilder->setInteger('ghi', 0));
+        $this->assertSame($dataBuilder, $dataBuilder->setInteger('fail', 1337, 1337));
+        $this->assertSame($dataBuilder, $dataBuilder->setInteger('jkl', '27'));
 
         $expectedData = [
             'abc' => 42,
@@ -87,7 +87,7 @@ class DataBuilderTest extends TestCase
             'ghi' => 0,
             'jkl' => 27
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 
     /**
@@ -96,11 +96,11 @@ class DataBuilderTest extends TestCase
     public function testSetFloat()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals($dataBuilder, $dataBuilder->setFloat('abc', 4.2));
-        $this->assertEquals($dataBuilder, $dataBuilder->setFloat('def', -2.1));
-        $this->assertEquals($dataBuilder, $dataBuilder->setFloat('ghi', 0.));
-        $this->assertEquals($dataBuilder, $dataBuilder->setFloat('fail', 13.37, 13.37));
-        $this->assertEquals($dataBuilder, $dataBuilder->setFloat('jkl', '2.7'));
+        $this->assertSame($dataBuilder, $dataBuilder->setFloat('abc', 4.2));
+        $this->assertSame($dataBuilder, $dataBuilder->setFloat('def', -2.1));
+        $this->assertSame($dataBuilder, $dataBuilder->setFloat('ghi', 0.));
+        $this->assertSame($dataBuilder, $dataBuilder->setFloat('fail', 13.37, 13.37));
+        $this->assertSame($dataBuilder, $dataBuilder->setFloat('jkl', '2.7'));
 
         $expectedData = [
             'abc' => 4.2,
@@ -108,7 +108,7 @@ class DataBuilderTest extends TestCase
             'ghi' => 0.,
             'jkl' => 2.7
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 
     /**
@@ -117,17 +117,17 @@ class DataBuilderTest extends TestCase
     public function testSetString()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals($dataBuilder, $dataBuilder->setString('abc', 'def'));
-        $this->assertEquals($dataBuilder, $dataBuilder->setString('ghi', ''));
-        $this->assertEquals($dataBuilder, $dataBuilder->setString('fail', 'jkl', 'jkl'));
-        $this->assertEquals($dataBuilder, $dataBuilder->setString('mno', 42));
+        $this->assertSame($dataBuilder, $dataBuilder->setString('abc', 'def'));
+        $this->assertSame($dataBuilder, $dataBuilder->setString('ghi', ''));
+        $this->assertSame($dataBuilder, $dataBuilder->setString('fail', 'jkl', 'jkl'));
+        $this->assertSame($dataBuilder, $dataBuilder->setString('mno', 42));
 
         $expectedData = [
             'abc' => 'def',
             'ghi' => '',
             'mno' => '42',
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 
     /**
@@ -136,15 +136,15 @@ class DataBuilderTest extends TestCase
     public function testSetDateTime()
     {
         $dataBuilder = new DataBuilder();
-        $this->assertEquals(
+        $this->assertSame(
             $dataBuilder,
             $dataBuilder->setDateTime('abc', new DateTime('2038-01-19 03:14:07'), 'Y-m-d')
         );
-        $this->assertEquals(
+        $this->assertSame(
             $dataBuilder,
             $dataBuilder->setDateTime('def', new DateTime('2038-01-19 03:14:07'), 'Y-m-d H:i:s')
         );
-        $this->assertEquals(
+        $this->assertSame(
             $dataBuilder,
             $dataBuilder->setDateTime('fail', new DateTime('2038-01-19 03:14:07'), 'Y-m-d', '2038-01-19')
         );
@@ -153,7 +153,7 @@ class DataBuilderTest extends TestCase
             'abc' => '2038-01-19',
             'def' => '2038-01-19 03:14:07'
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 
     /**
@@ -168,12 +168,12 @@ class DataBuilderTest extends TestCase
             'def' => 13.37,
             'ghi' => 'jkl'
         ];
-        $this->assertEquals($dataBuilder, $dataBuilder->setArray('foo', $value));
-        $this->assertEquals($dataBuilder, $dataBuilder->setArray('bar', $value, 'strval'));
-        $this->assertEquals($dataBuilder, $dataBuilder->setArray('baz', new ArrayIterator($value)));
-        $this->assertEquals($dataBuilder, $dataBuilder->setArray('mno', []));
-        $this->assertEquals($dataBuilder, $dataBuilder->setArray('fail', 42));
-        $this->assertEquals($dataBuilder, $dataBuilder->setArray('fail', [], null, []));
+        $this->assertSame($dataBuilder, $dataBuilder->setArray('foo', $value));
+        $this->assertSame($dataBuilder, $dataBuilder->setArray('bar', $value, 'strval'));
+        $this->assertSame($dataBuilder, $dataBuilder->setArray('baz', new ArrayIterator($value)));
+        $this->assertSame($dataBuilder, $dataBuilder->setArray('mno', []));
+        $this->assertSame($dataBuilder, $dataBuilder->setArray('fail', 42));
+        $this->assertSame($dataBuilder, $dataBuilder->setArray('fail', [], null, []));
 
         $expectedData = [
             'foo' => [
@@ -193,6 +193,6 @@ class DataBuilderTest extends TestCase
             ],
             'mno' => []
         ];
-        $this->assertEquals($expectedData, $dataBuilder->getData());
+        $this->assertSame($expectedData, $dataBuilder->getData());
     }
 }

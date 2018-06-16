@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @author BluePsyduck <bluepsyduck@gmx.com>
  * @license http://opensource.org/licenses/GPL-3.0 GPL v3
  *
- * @coversDefaultClass BluePsyduck\Common\Data\DataContainer
+ * @coversDefaultClass \BluePsyduck\Common\Data\DataContainer
  */
 class DataContainerTest extends TestCase
 {
@@ -32,16 +32,19 @@ class DataContainerTest extends TestCase
      * Tests the constructing and getting the data.
      * @param mixed $data
      * @param array $expectedData
+     * @covers ::__construct
+     * @covers ::getData
      * @dataProvider provideConstruct
      */
     public function testConstructAndGet($data, array $expectedData)
     {
         $dataContainer = new DataContainer($data);
-        $this->assertEquals($expectedData, $dataContainer->getData());
+        $this->assertSame($expectedData, $dataContainer->getData());
     }
 
     /**
      * Tests getting a value.
+     * @covers ::get
      */
     public function testGet()
     {
@@ -57,17 +60,18 @@ class DataContainerTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals(true, $dataContainer->get('abc'));
-        $this->assertEquals(42, $dataContainer->get(['def']));
-        $this->assertEquals('jkl', $dataContainer->get(['ghi']));
-        $this->assertEquals(13.37, $dataContainer->get(['first', 'second', 'mno']));
-        $this->assertEquals(['stu', 'vwx'], $dataContainer->get(['first', 'second', 'pqr']));
-        $this->assertEquals(null, $dataContainer->get(['none']));
-        $this->assertEquals($this, $dataContainer->get(['none'], $this));
+        $this->assertSame(true, $dataContainer->get('abc'));
+        $this->assertSame(42, $dataContainer->get(['def']));
+        $this->assertSame('jkl', $dataContainer->get(['ghi']));
+        $this->assertSame(13.37, $dataContainer->get(['first', 'second', 'mno']));
+        $this->assertSame(['stu', 'vwx'], $dataContainer->get(['first', 'second', 'pqr']));
+        $this->assertSame(null, $dataContainer->get(['none']));
+        $this->assertSame($this, $dataContainer->get(['none'], $this));
     }
 
     /**
      * Tests getting a boolean.
+     * @covers ::getBoolean
      */
     public function testGetBoolean()
     {
@@ -82,16 +86,17 @@ class DataContainerTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals(true, $dataContainer->getBoolean('abc'));
-        $this->assertEquals(false, $dataContainer->getBoolean(['def']));
-        $this->assertEquals(true, $dataContainer->getBoolean(['ghi']));
-        $this->assertEquals(true, $dataContainer->getBoolean(['first', 'second', 'jkl']));
-        $this->assertEquals(false, $dataContainer->getBoolean(['none']));
-        $this->assertEquals(true, $dataContainer->getBoolean(['none'], true));
+        $this->assertSame(true, $dataContainer->getBoolean('abc'));
+        $this->assertSame(false, $dataContainer->getBoolean(['def']));
+        $this->assertSame(true, $dataContainer->getBoolean(['ghi']));
+        $this->assertSame(true, $dataContainer->getBoolean(['first', 'second', 'jkl']));
+        $this->assertSame(false, $dataContainer->getBoolean(['none']));
+        $this->assertSame(true, $dataContainer->getBoolean(['none'], true));
     }
 
     /**
      * Tests getting a integer.
+     * @covers ::getInteger
      */
     public function testGetInteger()
     {
@@ -106,16 +111,17 @@ class DataContainerTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals(42, $dataContainer->getInteger('abc'));
-        $this->assertEquals(-21, $dataContainer->getInteger(['def']));
-        $this->assertEquals(1337, $dataContainer->getInteger(['ghi']));
-        $this->assertEquals(27, $dataContainer->getInteger(['first', 'second', 'jkl']));
-        $this->assertEquals(0, $dataContainer->getInteger(['none']));
-        $this->assertEquals(123, $dataContainer->getInteger(['none'], 123));
+        $this->assertSame(42, $dataContainer->getInteger('abc'));
+        $this->assertSame(-21, $dataContainer->getInteger(['def']));
+        $this->assertSame(1337, $dataContainer->getInteger(['ghi']));
+        $this->assertSame(27, $dataContainer->getInteger(['first', 'second', 'jkl']));
+        $this->assertSame(0, $dataContainer->getInteger(['none']));
+        $this->assertSame(123, $dataContainer->getInteger(['none'], 123));
     }
 
     /**
      * Tests getting a float.
+     * @covers ::getFloat
      */
     public function testGetFloat()
     {
@@ -130,16 +136,17 @@ class DataContainerTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals(4.2, $dataContainer->getFloat('abc'));
-        $this->assertEquals(-2.1, $dataContainer->getFloat(['def']));
-        $this->assertEquals(13.37, $dataContainer->getFloat(['ghi']));
-        $this->assertEquals(27., $dataContainer->getFloat(['first', 'second', 'jkl']));
-        $this->assertEquals(0, $dataContainer->getFloat(['none']));
-        $this->assertEquals(12.3, $dataContainer->getFloat(['none'], 12.3));
+        $this->assertSame(4.2, $dataContainer->getFloat('abc'));
+        $this->assertSame(-2.1, $dataContainer->getFloat(['def']));
+        $this->assertSame(13.37, $dataContainer->getFloat(['ghi']));
+        $this->assertSame(27., $dataContainer->getFloat(['first', 'second', 'jkl']));
+        $this->assertSame(0., $dataContainer->getFloat(['none']));
+        $this->assertSame(12.3, $dataContainer->getFloat(['none'], 12.3));
     }
 
     /**
      * Tests getting a string.
+     * @covers ::getString
      */
     public function testGetString()
     {
@@ -153,15 +160,16 @@ class DataContainerTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals('def', $dataContainer->getString('abc'));
-        $this->assertEquals('42', $dataContainer->getString(['ghi']));
-        $this->assertEquals('mno', $dataContainer->getString(['first', 'second', 'jkl']));
-        $this->assertEquals('', $dataContainer->getString(['none']));
-        $this->assertEquals('pqr', $dataContainer->getString(['none'], 'pqr'));
+        $this->assertSame('def', $dataContainer->getString('abc'));
+        $this->assertSame('42', $dataContainer->getString(['ghi']));
+        $this->assertSame('mno', $dataContainer->getString(['first', 'second', 'jkl']));
+        $this->assertSame('', $dataContainer->getString(['none']));
+        $this->assertSame('pqr', $dataContainer->getString(['none'], 'pqr'));
     }
 
     /**
      * Tests getting a DateTime.
+     * @covers ::getDateTime
      */
     public function testGetDateTime()
     {
@@ -195,6 +203,8 @@ class DataContainerTest extends TestCase
 
     /**
      * Tests getting an object.
+     * @covers ::getObject
+     * @covers ::createObject
      */
     public function testGetObject()
     {
@@ -216,6 +226,7 @@ class DataContainerTest extends TestCase
 
     /**
      * Tests getting an array.
+     * @covers ::getArray
      */
     public function testGetArray()
     {
@@ -231,16 +242,18 @@ class DataContainerTest extends TestCase
             'pqr' => 42
         ]);
 
-        $this->assertEquals(['def' => 'ghi'], $dataContainer->getArray('abc'));
-        $this->assertEquals(['jkl' => 'mno'], $dataContainer->getArray(['first', 'second']));
-        $this->assertEquals([], $dataContainer->getArray('pqr'));
-        $this->assertEquals(['stu' => 'vwx'], $dataContainer->getArray('pqr', ['stu' => 'vwx']));
-        $this->assertEquals([], $dataContainer->getArray('none'));
-        $this->assertEquals(['stu' => 'vwx'], $dataContainer->getArray('none', ['stu' => 'vwx']));
+        $this->assertSame(['def' => 'ghi'], $dataContainer->getArray('abc'));
+        $this->assertSame(['jkl' => 'mno'], $dataContainer->getArray(['first', 'second']));
+        $this->assertSame([], $dataContainer->getArray('pqr'));
+        $this->assertSame(['stu' => 'vwx'], $dataContainer->getArray('pqr', ['stu' => 'vwx']));
+        $this->assertSame([], $dataContainer->getArray('none'));
+        $this->assertSame(['stu' => 'vwx'], $dataContainer->getArray('none', ['stu' => 'vwx']));
     }
 
     /**
      * Tests getting an object array-
+     * @covers ::getObjectArray
+     * @covers ::createObject
      */
     public function testGetObjectArray()
     {
