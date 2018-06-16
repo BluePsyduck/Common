@@ -26,7 +26,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "BluePsyduckTests\\Common\\": "test/src/"
+            "BluePsyduckTest\\Common\\": "test/src/",
+            "BluePsyduckTestAsset\\Common\\": "test/asset/"
         }
     },
     "scripts": {

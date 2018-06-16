@@ -87,3 +87,12 @@ echo $dataContainer->getInteger(['first', 'second']); // 42
 // Default values for undefined keys
 echo $dataContainer->getFloat('missing', 13.37); // 13.37 
 ```
+
+## ReflectionTrait
+
+This trait provides some methods to easily access non-public properties and invoke non-public methods of classes to be
+used in tests.
+
+* **injectProperty():** Injects a value into the specified property.
+* **extractProperty():** Extracts the value of the specified property.
+* **invokeMethod():** Invokes the specified method and returns its result value.
