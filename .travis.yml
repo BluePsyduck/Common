@@ -8,7 +8,7 @@ matrix:
     - php: 7.2
     - php: nightly
   allow_failures:
-    - php: nigthly
+    - php: nightly
 
 install:
   - composer update --no-interaction
